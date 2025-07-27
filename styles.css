@@ -10,6 +10,7 @@ body {
   background: #f8f9fa;
   color: #222;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
@@ -349,63 +350,75 @@ footer a:hover {
   color: #fff;
 }
 
+nav .nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+nav .nav-toggle .bar {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+nav .nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+nav .nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+nav .nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 900px) {
-  .container {
-    max-width: 98vw;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  nav .nav-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: -240px;
+    background: #222;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 220px;
+    padding: 1.2rem 1.5rem;
+    gap: 1.2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border-radius: 0 0 0 12px;
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+    z-index: 1000;
+    display: none;
+  }
+  .nav-links.nav-open {
+    right: 0;
+    display: flex;
+  }
+  nav .container {
+    position: relative;
   }
 }
 
 @media (max-width: 600px) {
-  .container {
-    width: 100%;
-    max-width: 100vw;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-  }
-  nav .container {
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  #hero h2 {
-    font-size: 2rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 1px 0 #2196f3;
-  }
-  #hero p {
-    font-size: 1rem;
+  nav .nav-toggle {
+    top: 10px;
+    right: 10px;
   }
   .nav-links {
-    gap: 0.7rem;
-  }
-  #about, #projects, #contact, #education, #books, #industrial-designs {
-    padding: 1rem 0.5rem;
-  }
-  #about p {
-    font-size: 1rem;
-  }
-  #education li {
-    padding: 0.7rem 0.7rem;
-  }
-  #projects {
-    padding: 1rem 0.5rem;
-  }
-  #projects .project-list li {
-    padding: 0.7rem 0.7rem;
-  }
-  #books {
-    padding: 1rem 0.5rem;
-  }
-  #books li {
-    padding: 0.7rem 0.7rem;
-  }
-  #industrial-designs {
-    padding: 1rem 0.5rem;
-  }
-  #industrial-designs li {
-    padding: 0.7rem 0.7rem;
-  }
-  header h1 {
-    font-size: 1.5rem;
+    top: 56px;
+    width: 90vw;
+    padding: 1rem 1rem;
   }
 }

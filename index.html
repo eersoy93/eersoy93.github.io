@@ -19,6 +19,11 @@
         <nav>
             <div class="container">
                 <h1><a href="#">Erdem Ersoy (eersoy93)</a></h1>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
@@ -124,5 +129,18 @@
             <p>Copyright (&copy;) 2025 Erdem Ersoy (eersoy93). Powered by <a href="https://pages.github.com/">GitHub Pages</a>.</p>
         </div>
     </footer>
+    <script>
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-open');
+        navToggle.classList.toggle('open');
+        if (navLinks.classList.contains('nav-open')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      });
+    </script>
 </body>
 </html>
